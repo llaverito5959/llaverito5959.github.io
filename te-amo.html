@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para Hanelit - Mi Verano Eterno</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #fff9f9, #fff0f5);
+            color: #5a3d5c;
+            min-height: 100vh;
+            overflow-x: hidden;
+            touch-action: manipulation;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Husky Siberiano CSS */
+        .husky {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 80px;
+            z-index: 100;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .husky-body {
+            position: absolute;
+            width: 70px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 40px 40px 15px 15px;
+            bottom: 0;
+            left: 15px;
+        }
+        
+        .husky-head {
+            position: absolute;
+            width: 50px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 25px 25px 15px 15px;
+            top: 8px;
+            left: 25px;
+        }
+        
+        .husky-ear-left, .husky-ear-right {
+            position: absolute;
+            width: 15px;
+            height: 25px;
+            background: #b0b0b0;
+            border-radius: 8px;
+            top: 0;
+        }
+        
+        .husky-ear-left {
+            left: 15px;
+            transform: rotate(-30deg);
+        }
+        
+        .husky-ear-right {
+            right: 15px;
+            transform: rotate(30deg);
+        }
+        
+        .husky-eye-left, .husky-eye-right {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .husky-eye-left {
+            left: 35px;
+        }
+        
+        .husky-eye-right {
+            right: 35px;
+        }
+        
+        .husky-nose {
+            position: absolute;
+            width: 8px;
+            height: 6px;
+            background: #333;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: 28px;
+            left: 46px;
+        }
+        
+        .husky-mouth {
+            position: absolute;
+            width: 15px;
+            height: 8px;
+            border-bottom: 2px solid #333;
+            border-radius: 0 0 8px 8px;
+            top: 34px;
+            left: 42px;
+        }
+        
+        .husky-spot {
+            position: absolute;
+            width: 25px;
+            height: 15px;
+            background: #a0a0a0;
+            border-radius: 50%;
+            top: 12px;
+            left: 38px;
+        }
+        
+        .husky-tag {
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff85b3;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.5rem;
+            white-space: nowrap;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Corazones flotantes */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1rem;
+            animation: floatHeart 8s linear infinite;
+            opacity: 0.7;
+            color: #ffb7d5;
+        }
+        
+        @keyframes floatHeart {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0; 
+            }
+            20% { opacity: 0.7; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Contenido principal */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            padding-top: 3rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #ff85b3;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite alternate;
+            line-height: 1.2;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #9c7b9d;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Ramo de rosas CENTRADO */
+        .bouquet-section {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 0 20px;
+            min-height: 400px;
+        }
+        
+        .bouquet {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+        
+        .rose {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            transform-style: preserve-3d;
+            animation: sway 6s infinite ease-in-out;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            touch-action: manipulation;
+        }
+        
+        /* Posiciones de las rosas CENTRADAS */
+        .rose:nth-child(1) { left: 50%; top: 5%; transform: translateX(-50%); }
+        .rose:nth-child(2) { left: 40%; top: 12%; }
+        .rose:nth-child(3) { left: 60%; top: 12%; }
+        .rose:nth-child(4) { left: 35%; top: 22%; }
+        .rose:nth-child(5) { left: 65%; top: 22%; }
+        .rose:nth-child(6) { left: 30%; top: 32%; }
+        .rose:nth-child(7) { left: 50%; top: 28%; transform: translateX(-50%); }
+        .rose:nth-child(8) { left: 70%; top: 32%; }
+        .rose:nth-child(9) { left: 45%; top: 38%; }
+        .rose:nth-child(10) { left: 55%; top: 38%; }
+        .rose:nth-child(11) { left: 40%; top: 48%; }
+        .rose:nth-child(12) { left: 60%; top: 48%; }
+        .rose:nth-child(13) { left: 50%; top: 43%; transform: translateX(-50%); }
+        .rose:nth-child(14) { left: 35%; top: 58%; }
+        .rose:nth-child(15) { left: 65%; top: 58%; }
+        .rose:nth-child(16) { left: 50%; top: 63%; transform: translateX(-50%); }
+        .rose:nth-child(17) { left: 45%; top: 73%; }
+        .rose:nth-child(18) { left: 55%; top: 73%; }
+        
+        .rose .flower {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, #ffb7d5, #ff85b3);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 
+                0 4px 12px rgba(255, 133, 179, 0.4),
+                inset 0 -8px 15px rgba(255, 214, 231, 0.8),
+                inset 8px 0 15px rgba(255, 184, 210, 0.6);
+            transform: rotateX(15deg);
+            transition: all 0.5s ease;
+        }
+        
+        .rose .petal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 214, 231, 0.8), rgba(255, 184, 210, 0.6));
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 
+                0 4px 12px rgba(255, 133, 179, 0.3),
+                inset 0 -8px 15px rgba(255, 214, 231, 0.6);
+            transform: rotateX(15deg);
+            transition: all 0.5s ease;
+        }
+        
+        .rose .stem {
+            position: absolute;
+            width: 6px;
+            height: 100px;
+            background: linear-gradient(to bottom, #7acbad, #5ab895);
+            bottom: -100px;
+            left: 21px;
+            border-radius: 4px;
+            z-index: -1;
+            box-shadow: 
+                inset 0 0 8px rgba(255, 255, 255, 0.5),
+                1px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rose .leaf {
+            position: absolute;
+            width: 25px;
+            height: 12px;
+            background: #5ab895;
+            border-radius: 50% 50% 50% 0;
+            bottom: -65px;
+            z-index: -1;
+            box-shadow: 
+                inset 0 0 8px rgba(255, 255, 255, 0.3),
+                1px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rose .leaf.left {
+            left: -4px;
+            transform: rotate(-30deg);
+        }
+        
+        .rose .leaf.right {
+            right: -4px;
+            transform: rotate(30deg);
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotateZ(-3deg); }
+            50% { transform: rotateZ(3deg); }
+        }
+        
+        .rose:hover .flower, .rose:active .flower {
+            transform: rotateX(15deg) scale(1.2);
+            box-shadow: 
+                0 6px 20px rgba(255, 133, 179, 0.6),
+                inset 0 -8px 20px rgba(255, 214, 231, 0.9),
+                inset 8px 0 20px rgba(255, 184, 210, 0.7);
+        }
+        
+        .rose:hover .petal, .rose:active .petal {
+            transform: rotateX(15deg) scale(1.1);
+        }
+        
+        /* Mensaje de amor */
+        .love-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            width: 350px;
+            text-align: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .love-message.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .love-message h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #ff85b3;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .love-message p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            color: #5a3d5c;
+        }
+        
+        .love-message button {
+            background: linear-gradient(to right, #ff85b3, #ffb7d5);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 133, 179, 0.3);
+            width: 100%;
+            max-width: 150px;
+            margin: 0 auto;
+        }
+        
+        .love-message button:hover, .love-message button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 133, 179, 0.4);
+        }
+        
+        /* Sección de mensaje */
+        .message-section {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .message-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.3rem;
+            color: #5a3d5c;
+            text-align: center;
+        }
+        
+        /* Nicknames */
+        .nicknames {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .nickname {
+            background: linear-gradient(to right, #ffb7d5, #ffd6e7);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(255, 133, 179, 0.2);
+            transition: all 0.3s ease;
+            flex: 1 0 auto;
+            max-width: 45%;
+            text-align: center;
+        }
+        
+        .nickname:hover, .nickname:active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 133, 179, 0.3);
+        }
+        
+        /* Fechas especiales */
+        .special-dates {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 1.5rem 0;
+        }
+        
+        @media (min-width: 500px) {
+            .special-dates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .date-card {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 12px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .date-card:hover, .date-card:active {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .date-title {
+            color: #ff85b3;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+        
+        .date-value {
+            font-size: 1rem;
+            color: #5a3d5c;
+        }
+        
+        /* Reproductor de música */
+        .music-player {
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 15px;
+            padding: 1.3rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .player-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .album-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            margin-right: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            object-fit: cover;
+        }
+        
+        .song-info {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .song-title {
+            font-size: 1.1rem;
+            color: #5a3d5c;
+            margin-bottom: 4px;
+        }
+        
+        .song-artist {
+            font-size: 0.85rem;
+            color: #9c7b9d;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .control-btn {
+            background: linear-gradient(to right, #ffb7d5, #ffd6e7);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin: 0 8px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(255, 133, 179, 0.2);
+        }
+        
+        .control-btn:hover, .control-btn:active {
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(255, 133, 179, 0.3);
+        }
+        
+        .lyrics {
+            font-style: italic;
+            color: #9c7b9d;
+            line-height: 1.6;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Badge Mariscal */
+        .mariscal-badge {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8px;
+            border: 2px solid #7acbad;
+            font-size: 0.6rem;
+            line-height: 1.2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem 0;
+            color: #9c7b9d;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+        
+        /* Efecto de polvo de hadas */
+        .fairy-dust {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 8px 1px #ffb7d5;
+            z-index: 100;
+        }
+        
+        /* Mensaje de carga */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #fff9f9, #fff0f5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ffb7d5;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-family: 'Dancing Script', cursive;
+            color: #ff85b3;
+            font-size: 1.5rem;
+        }
+        
+        /* Mejoras de accesibilidad */
+        @media (prefers-reduced-motion) {
+            .heart, .husky, .rose, .loading-spinner {
+                animation: none !important;
+            }
+        }
+        
+        /* Ajustes para tablets */
+        @media (min-width: 600px) {
+            .container {
+                padding: 2rem;
+                padding-top: 4rem;
+            }
+            
+            .title {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .nickname {
+                max-width: 30%;
+            }
+        }
+        
+        /* Ajustes para desktop */
+        @media (min-width: 900px) {
+            .container {
+                max-width: 800px;
+            }
+            
+            .love-message {
+                width: 400px;
+                padding: 2rem;
+            }
+            
+            .love-message h3 {
+                font-size: 2rem;
+            }
+            
+            .love-message p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Cargando tu amor...</div>
+    </div>
+    
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <div class="mariscal-badge">
+        Mariscal<br>Venezuela<br>1er año
+    </div>
+    
+    <!-- Husky Siberiano CSS -->
+    <div class="husky" id="husky">
+        <div class="husky-body"></div>
+        <div class="husky-head"></div>
+        <div class="husky-ear-left"></div>
+        <div class="husky-ear-right"></div>
+        <div class="husky-eye-left"></div>
+        <div class="husky-eye-right"></div>
+        <div class="husky-nose"></div>
+        <div class="husky-mouth"></div>
+        <div class="husky-spot"></div>
+        <div class="husky-tag">Plumst</div>
+    </div>
+    
+    <!-- Mensaje de amor -->
+    <div class="love-message" id="loveMessage">
+        <h3>Para mi Hanelit</h3>
+        <p>Recuerda que te amo desde el primer día que te conocí. Me prometí hacerte feliz y cada día renuevo esa promesa. Eres mi verano eterno.</p>
+        <button id="closeMessage">Cerrar</button>
+    </div>
+    
+    <!-- Contenido principal -->
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Hanelit</h1>
+            <h2 class="subtitle">Mi Verano Eterno</h2>
+        </header>
+        
+        <!-- Ramo de rosas CENTRADO -->
+        <section class="bouquet-section">
+            <div class="bouquet" id="bouquet">
+                <!-- Rosas generadas por JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Mensaje personal -->
+        <section class="message-section">
+            <p class="message-text">
+                Mi amor, mi Copito de Nieve, mi Señorita Liendo...<br><br>
+                Este ramo de rosas es para ti, porque aunque la distancia nos separe, nuestro amor florece cada día más fuerte. 
+                Cada rosa representa un momento especial que hemos compartido, una promesa de amor que sigue creciendo.<br><br>
+                Desde aquel primer año en el Mariscal, supe que eras especial. Hoy, aunque estemos lejos, mi corazón verde late solo por ti.
+            </p>
+            
+            <div class="nicknames">
+                <div class="nickname">Copito de Nieve</div>
+                <div class="nickname">Señorita Liendo</div>
+                <div class="nickname">Mi Gyal</div>
+                <div class="nickname">Mi Verano</div>
+            </div>
+            
+            <div class="special-dates">
+                <div class="date-card">
+                    <div class="date-title">Nos conocimos</div>
+                    <div class="date-value">1er año en Mariscal</div>
+                </div>
+                <div class="date-card">
+                    <div class="date-title">Aniversario</div>
+                    <div class="date-value">28 de Enero</div>
+                </div>
+                <div class="date-card">
+                    <div class="date-title">Tu cumpleaños</div>
+                    <div class="date-value">28 de Diciembre</div>
+                </div>
+                <div class="date-card">
+                    <div class="date-title">Último encuentro</div>
+                    <div class="date-value">3 de Diciembre 2022</div>
+                </div>
+            </div>
+            
+            <div class="music-player">
+                <div class="player-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/Bad_Bunny_-_Un_Verano_Sin_Ti.png" alt="Album Cover" class="album-cover">
+                    <div class="song-info">
+                        <div class="song-title">Agosto</div>
+                        <div class="song-artist">Bad Bunny • Un Verano Sin Ti</div>
+                    </div>
+                </div>
+                
+                <div class="lyrics">
+                    "Baby, vamo' a hacerlo bajo las estrella'<br>
+                    Y que la Luna nos grabe<br>
+                    Mañana, dónde estará, no se sabe<br>
+                    Ojalá y el verano nunca se acabe, nunca se acabe"
+                </div>
+                
+                <div class="player-controls">
+                    <button class="control-btn" id="prevBtn"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="playBtn"><i class="fas fa-play" id="playIcon"></i></button>
+                    <button class="control-btn" id="nextBtn"><i class="fas fa-step-forward"></i></button>
+                </div>
+            </div>
+        </section>
+        
+        <div class="footer">
+            Con todo mi amor, Plumst - 1 de Agosto 2025
+        </div>
+    </div>
+
+    <!-- Audio - Reemplaza "agosto-bad-bunny.mp3" con tu archivo de música -->
+    <audio id="song" src="agosto-bad-bunny.mp3"></audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script>
+        // ============ INICIALIZACIÓN ============
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carga
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 1500);
+            
+            createHearts();
+            createRoses();
+            initMusicPlayer();
+            initHusky();
+            
+            // Verificar fechas especiales
+            const today = new Date();
+            if (today.getMonth() === 0 && today.getDate() === 28) { // 28 de enero
+                showAnniversaryMessage();
+            } else if (today.getMonth() === 11 && today.getDate() === 28) { // 28 de diciembre
+                showBirthdayMessage();
+            }
+        });
+        
+        // ============ CORAZONES FLOTANTES ============
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartIcons = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 0.8 + 0.8}rem`;
+                heart.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // ============ ROSAS CENTRADAS ============
+        function createRoses() {
+            const bouquet = document.getElementById('bouquet');
+            
+            // Creamos 18 rosas para un ramo completo
+            for (let i = 0; i < 18; i++) {
+                const rose = document.createElement('div');
+                rose.className = 'rose';
+                
+                // Crear partes de la rosa
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                const stem = document.createElement('div');
+                stem.className = 'stem';
+                
+                const leafLeft = document.createElement('div');
+                leafLeft.className = 'leaf left';
+                
+                const leafRight = document.createElement('div');
+                leafRight.className = 'leaf right';
+                
+                // Ensamblar la rosa
+                rose.appendChild(flower);
+                rose.appendChild(petal);
+                rose.appendChild(stem);
+                rose.appendChild(leafLeft);
+                rose.appendChild(leafRight);
+                
+                // Efecto al tocar
+                rose.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showLoveMessage();
+                    
+                    // Efecto visual
+                    gsap.to(flower, {
+                        scale: 1.3,
+                        duration: 0.5,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: "elastic.out(1, 0.5)"
+                    });
+                    
+                    // Crear efecto de polvo de hadas
+                    for (let i = 0; i < 8; i++) {
+                        createFairyDust(e.clientX, e.clientY);
+                    }
+                });
+                
+                // Soporte para touch en móviles
+                rose.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.click();
+                }, {passive: false});
+                
+                bouquet.appendChild(rose);
+            }
+        }
+        
+        function createFairyDust(x, y) {
+            const dust = document.createElement('div');
+            dust.className = 'fairy-dust';
+            dust.style.left = `${x}px`;
+            dust.style.top = `${y}px`;
+            
+            document.body.appendChild(dust);
+            
+            // Animación
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 30 + Math.random() * 40;
+            const targetX = x + Math.cos(angle) * distance;
+            const targetY = y + Math.sin(angle) * distance - 40;
+            
+            gsap.to(dust, {
+                left: targetX,
+                top: targetY,
+                opacity: 0,
+                scale: 1.5,
+                duration: 0.8 + Math.random(),
+                onComplete: () => dust.remove()
+            });
+        }
+        
+        function showLoveMessage() {
+            const message = document.getElementById('loveMessage');
+            message.classList.add('show');
+            
+            // Animación de entrada
+            gsap.fromTo(message, 
+                { scale: 0.8, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.4, ease: "back.out" }
+            );
+        }
+        
+        document.getElementById('closeMessage').addEventListener('click', function() {
+            const message = document.getElementById('loveMessage');
+            gsap.to(message, {
+                scale: 0.8,
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => message.classList.remove('show')
+            });
+        });
+        
+        // ============ HUSKY INTERACTIVO ============
+        function initHusky() {
+            const husky = document.getElementById('husky');
+            
+            function handleHuskyClick() {
+                // Animación de salto
+                gsap.to(husky, {
+                    y: -20,
+                    duration: 0.3,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power1.out"
+                });
+                
+                // Mostrar mensaje especial
+                const message = document.getElementById('loveMessage');
+                message.querySelector('h3').textContent = "De Plumst para Hanelit";
+                message.querySelector('p').textContent = "¡Guau guau! (Eso en lenguaje husky significa que te amo más que a mis croquetas favoritas)";
+                showLoveMessage();
+            }
+            
+            husky.addEventListener('click', handleHuskyClick);
+            husky.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                handleHuskyClick();
+            }, {passive: false});
+        }
+        
+        // ============ REPRODUCTOR DE MÚSICA ============
+        function initMusicPlayer() {
+            const song = document.getElementById('song');
+            const playBtn = document.getElementById('playBtn');
+            const playIcon = document.getElementById('playIcon');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            let isPlaying = false;
+            
+            function togglePlay() {
+                if (isPlaying) {
+                    song.pause();
+                    playIcon.classList.replace('fa-pause', 'fa-play');
+                } else {
+                    song.play().catch(e => {
+                        // Mostrar alerta si hay error de reproducción
+                        alert("Por favor toca el botón de reproducción para iniciar la música. Algunos navegadores requieren interacción del usuario.");
+                    });
+                    playIcon.classList.replace('fa-play', 'fa-pause');
+                    
+                    // Efecto visual al reproducir
+                    gsap.to(playBtn, {
+                        scale: 1.15,
+                        duration: 0.3,
+                        yoyo: true,
+                        repeat: 1
+                    });
+                    
+                    // Animar las rosas
+                    const roses = document.querySelectorAll('.rose');
+                    roses.forEach((rose, index) => {
+                        setTimeout(() => {
+                            gsap.to(rose.querySelector('.flower'), {
+                                scale: 1.1,
+                                duration: 0.5,
+                                yoyo: true,
+                                ease: "elastic.out(1, 0.5)"
+                            });
+                        }, index * 80);
+                    });
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            playBtn.addEventListener('click', togglePlay);
+            playBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                togglePlay();
+            }, {passive: false});
+            
+            prevBtn.addEventListener('click', function() {
+                song.currentTime = 0;
+                gsap.to(prevBtn, {
+                    rotation: -360,
+                    duration: 0.8,
+                    ease: "back.out"
+                });
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                song.currentTime = 0;
+                song.play();
+                isPlaying = true;
+                playIcon.classList.replace('fa-play', 'fa-pause');
+                
+                gsap.to(nextBtn, {
+                    rotation: 360,
+                    duration: 0.8,
+                    ease: "back.out"
+                });
+            });
+            
+            song.addEventListener('ended', function() {
+                playIcon.classList.replace('fa-pause', 'fa-play');
+                isPlaying = false;
+            });
+        }
+        
+        // ============ MENSAJE DE ANIVERSARIO ============
+        function showAnniversaryMessage() {
+            const message = document.createElement('div');
+            message.style.position = 'fixed';
+            message.style.top = '0';
+            message.style.left = '0';
+            message.style.width = '100%';
+            message.style.height = '100%';
+            message.style.background = 'rgba(255, 255, 255, 0.95)';
+            message.style.display = 'flex';
+            message.style.flexDirection = 'column';
+            message.style.justifyContent = 'center';
+            message.style.alignItems = 'center';
+            message.style.zIndex = '2000';
+            message.style.padding = '20px';
+            message.style.textAlign = 'center';
+            message.style.backdropFilter = 'blur(10px)';
+            message.style.color = '#5a3d5c';
+            
+            message.innerHTML = `
+                <h1 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 20px; color: #ff85b3;">¡Feliz Aniversario mi Amor!</h1>
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; max-width: 500px;">
+                    Hoy, 28 de enero, celebramos el día que te di mi corazón.<br><br>
+                    Cada momento a tu lado es un regalo que atesoro con todo mi ser.<br>
+                    Te amo más que ayer, pero menos que mañana.
+                </p>
+                <button style="padding: 12px 25px; background: linear-gradient(to right, #ff85b3, #ffb7d5); border: none; border-radius: 50px; color: white; font-size: 1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 133, 179, 0.3);">Cerrar</button>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Animación de entrada
+            gsap.from(message, {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.5,
+                ease: "back.out"
+            });
+            
+            // Botón para cerrar
+            message.querySelector('button').addEventListener('click', function() {
+                gsap.to(message, {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 0.3,
+                    onComplete: () => message.remove()
+                });
+            });
+        }
+        
+        // ============ MENSAJE DE CUMPLEAÑOS ============
+        function showBirthdayMessage() {
+            const message = document.createElement('div');
+            message.style.position = 'fixed';
+            message.style.top = '0';
+            message.style.left = '0';
+            message.style.width = '100%';
+            message.style.height = '100%';
+            message.style.background = 'rgba(255, 255, 255, 0.95)';
+            message.style.display = 'flex';
+            message.style.flexDirection = 'column';
+            message.style.justifyContent = 'center';
+            message.style.alignItems = 'center';
+            message.style.zIndex = '2000';
+            message.style.padding = '20px';
+            message.style.textAlign = 'center';
+            message.style.backdropFilter = 'blur(10px)';
+            message.style.color = '#5a3d5c';
+            
+            message.innerHTML = `
+                <h1 style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-bottom: 20px; color: #ff85b3;">¡Feliz Cumpleaños mi Amor!</h1>
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; max-width: 500px;">
+                    En tu día especial, quiero recordarte lo increíble que eres.<br><br>
+                    Que este nuevo año de vida esté lleno de alegría, amor y todos tus sueños hechos realidad.<br>
+                    Te mereces todo lo hermoso que la vida puede ofrecer.
+                </p>
+                <button style="padding: 12px 25px; background: linear-gradient(to right, #ff85b3, #ffb7d5); border: none; border-radius: 50px; color: white; font-size: 1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 133, 179, 0.3);">Cerrar</button>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Animación de entrada
+            gsap.from(message, {
+                opacity: 0,
+                scale: 0.9,
+                duration: 0.5,
+                ease: "back.out"
+            });
+            
+            // Botón para cerrar
+            message.querySelector('button').addEventListener('click', function() {
+                gsap.to(message, {
+                    opacity: 0,
+                    scale: 0.9,
+                    duration: 0.3,
+                    onComplete: () => message.remove()
+                });
+            });
+        }
+        
+        // ============ EFECTO DE CORAZONES AL TOCAR ============
+        function handleTapEffect(e) {
+            if (e.target.closest('.control-btn') || e.target.closest('#loveMessage') || e.target.closest('#husky')) return;
+            
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+            
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            heart.style.fontSize = '1.2rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.transform = 'translate(-50%, -50%) scale(0)';
+            heart.style.opacity = '0.8';
+            heart.style.zIndex = '100';
+            
+            document.body.appendChild(heart);
+            
+            // Animación
+            const animation = heart.animate([
+                { transform: 'translate(-50%, -50%) scale(0)', opacity: 0.8 },
+                { transform: 'translate(-50%, -120%) scale(1.3)', opacity: 0 }
+            ], {
+                duration: 1200,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            });
+            
+            animation.onfinish = () => heart.remove();
+        }
+        
+        document.addEventListener('click', handleTapEffect);
+        document.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 0) {
+                handleTapEffect(e);
+            }
+        }, {passive: true});
+    </script>
+</body>
+</html>
