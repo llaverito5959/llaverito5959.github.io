@@ -3,18 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copito de Nieve | Un Mensaje Especial</title>
+    <title>Un Verano Sin Ti | Para Alguien Especial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6a0dad;
-            --secondary-color: #9b59b6;
-            --accent-color: #e2b0ff;
-            --dark-color: #1a0525;
-            --light-color: #f8f0ff;
+            --primary-color: #FF6B00;
+            --secondary-color: #FF9500;
+            --accent-color: #FFC107;
+            --dark-color: #1A1A1A;
+            --light-color: #FFFFFF;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --neon-glow: 0 0 10px rgba(255, 107, 0, 0.8), 0 0 20px rgba(255, 149, 0, 0.6);
         }
         
         * {
@@ -30,63 +31,85 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             overflow-x: hidden;
             position: relative;
-        }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(106, 13, 173, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(155, 89, 182, 0.2) 0%, transparent 40%);
-            z-index: -1;
-            animation: pulse 15s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                            url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
             text-align: center;
-            padding: 2rem;
-            background: rgba(26, 5, 37, 0.7);
-            backdrop-filter: blur(10px);
+            padding: 3rem;
+            background: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), var(--neon-glow);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             transform: translateY(0);
             opacity: 1;
             transition: all 0.5s ease;
             animation: fadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+            margin-bottom: 3rem;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .album-cover {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), var(--neon-glow);
+            border: 3px solid var(--accent-color);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            z-index: 1;
+            animation: coverGlow 3s infinite alternate;
+        }
+        
+        @keyframes coverGlow {
+            0% { box-shadow: 0 10px 25px rgba(255, 107, 0, 0.5); }
+            100% { box-shadow: 0 10px 35px rgba(255, 149, 0, 0.8); }
+        }
+        
+        .album-cover:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .album-cover:hover img {
+            transform: scale(1.05);
         }
         
         h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
             position: relative;
             display: inline-block;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+            letter-spacing: 1px;
         }
         
         h1::after {
@@ -95,66 +118,91 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50%;
-            height: 3px;
+            width: 30%;
+            height: 2px;
             background: var(--gradient);
             border-radius: 3px;
+            animation: lineGrow 1s ease-out 0.5s both;
         }
         
-        .emoji {
-            font-size: clamp(3rem, 8vw, 5rem);
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 5px 15px rgba(226, 176, 255, 0.5));
+        @keyframes lineGrow {
+            from { width: 0; opacity: 0; }
+            to { width: 30%; opacity: 1; }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            line-height: 1.6;
-            margin: 1.5rem 0;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .artist {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .message-container {
+            perspective: 1000px;
+            margin: 2rem auto;
+        }
+        
+        .message {
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            margin: 0 auto;
+            opacity: 0.9;
+            max-width: 500px;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-container {
+            position: relative;
+            margin: 2rem 0;
+            z-index: 1;
         }
         
         .btn {
             display: inline-block;
             background: var(--gradient);
-            color: white;
-            padding: 1rem 2rem;
+            color: var(--dark-color);
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
             margin: 1.5rem 0;
-            box-shadow: 0 5px 15px rgba(106, 13, 173, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
             overflow: hidden;
             border: none;
             cursor: pointer;
-            animation: fadeInUp 1s ease-out 0.6s both;
+            animation: fadeInUp 1s ease-out 0.6s both, btnPulse 2s infinite 1.5s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        
+        @keyframes btnPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 149, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 149, 0, 0); }
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(106, 13, 173, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.7);
         }
         
         .btn:active {
-            transform: translateY(1px);
+            transform: translateY(2px);
         }
         
         .btn::before {
@@ -164,111 +212,209 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.6s;
         }
         
         .btn:hover::before {
             left: 100%;
         }
         
-        .snowflakes {
+        footer {
+            margin-top: 2rem;
+            font-size: 1rem;
+            opacity: 0.8;
+            animation: fadeIn 1s ease-out 0.9s both;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.1), transparent);
             z-index: -1;
         }
         
-        .snowflake {
+        /* Partículas de ambiente */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
             position: absolute;
-            color: var(--accent-color);
-            animation: fall linear infinite;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatParticle linear infinite;
+        }
+        
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* Efectos de borde */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--secondary-color), var(--primary-color));
+            background-size: 400%;
+            z-index: -1;
+            border-radius: 22px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: borderGlow 8s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: 0 0; opacity: 0.3; }
+            50% { background-position: 300% 0; opacity: 0.7; }
+            100% { background-position: 0 0; opacity: 0.3; }
+        }
+        
+        .container:hover::before {
+            opacity: 0.5;
+        }
+        
+        /* Sección adicional para permitir scroll */
+        .extra-space {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
             opacity: 0.7;
-        }
-        
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-        
-        footer {
-            margin-top: 2rem;
             font-size: 0.9rem;
-            opacity: 0.7;
-            animation: fadeIn 1s ease-out 0.9s both;
         }
         
         @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            
             .container {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .album-cover {
+                width: 220px;
+                height: 220px;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .btn {
-                padding: 0.8rem 1.5rem;
+                padding: 1rem 2rem;
                 font-size: 1rem;
+            }
+            
+            .message {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="snowflakes" id="snowflakes"></div>
+    <div class="particles" id="particles"></div>
     
     <div class="container">
-        <div class="emoji">❄️💚</div>
-        <h1>Copito de Nieve</h1>
-        <p>Hola, mi copito de nieve... Cada momento contigo es como un sueño hecho realidad.</p>
-        <a href="https://music.youtube.com/playlist?list=OLAK5uy_l3rT1z1t11Pn6CugxRd3ZxQQOpWGqzUMU" class="btn">Nuestro Verano 🔥</a>
+        <div class="album-cover">
+            <img src="un verano sin ti fotos/un-verano-sin-ti.jpg" alt="Un Verano Sin Ti - Bad Bunny">
+        </div>
+        <h1>Un Verano Sin Ti</h1>
+        <div class="artist">Bad Bunny</div>
         
-        <footer>
-            Hecho con 💚 para alguien especial
-        </footer>
+        <div class="message-container">
+            <div class="message">
+                Hola, mi copito de nieve... Cada momento contigo es como un sueño hecho realidad.
+            </div>
+        </div>
+        
+        <div class="btn-container">
+            <a href="https://music.youtube.com/playlist?list=OLAK5uy_l3rT1z1t11Pn6CugxRd3ZxQQOpWGqzUMU" class="btn">Ir al Álbum</a>
+        </div>
+    </div>
+    
+    <footer>
+        Hecho para 💚 de alguien especial
+    </footer>
+    
+    <div class="extra-space">
+        <p>Desliza hacia arriba para volver a ver el álbum</p>
     </div>
 
     <script>
-        // Crear copos de nieve
-        function createSnowflakes() {
-            const snowflakesContainer = document.getElementById('snowflakes');
-            const snowflakeCount = 30;
+        // Crear partículas de ambiente
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
             
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.classList.add('snowflake');
-                snowflake.innerHTML = '❄';
-                
-                // Posición aleatoria
-                const startPosX = Math.random() * 100;
-                const startPosY = Math.random() * -100;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
                 // Tamaño aleatorio
-                const size = Math.random() * 1.5 + 0.5;
+                const size = Math.random() * 6 + 2;
+                
+                // Posición inicial aleatoria
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100 + 100;
                 
                 // Duración de animación aleatoria
-                const duration = Math.random() * 10 + 5;
+                const duration = Math.random() * 15 + 10;
                 
                 // Retraso aleatorio
                 const delay = Math.random() * -20;
                 
-                snowflake.style.left = `${startPosX}vw`;
-                snowflake.style.top = `${startPosY}px`;
-                snowflake.style.fontSize = `${size}em`;
-                snowflake.style.animationDuration = `${duration}s`;
-                snowflake.style.animationDelay = `${delay}s`;
+                // Opacidad aleatoria
+                const opacity = Math.random() * 0.4 + 0.3;
                 
-                snowflakesContainer.appendChild(snowflake);
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.opacity = opacity;
+                
+                // Color aleatorio entre los colores del tema
+                const colors = ['#FF6B00', '#FF9500', '#FFC107', '#FFFFFF'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
             }
         }
         
-        // Iniciar cuando el DOM esté cargado
-        document.addEventListener('DOMContentLoaded', () => {
-            createSnowflakes();
-            
-            // Efecto de interacción con el contenedor
+        // Efecto de cursor personalizado
+        function initCursorEffect() {
             const container = document.querySelector('.container');
             
             container.addEventListener('mousemove', (e) => {
@@ -282,9 +428,24 @@
             });
             
             container.addEventListener('mouseleave', () => {
-                container.style.transition = 'all 0.5s ease';
+                container.style.transition = 'all 0.6s ease';
                 container.style.transform = 'rotateY(0deg) rotateX(0deg)';
             });
+        }
+        
+        // Iniciar cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            initCursorEffect();
+            
+            // Efecto de carga progresiva
+            const elements = document.querySelectorAll('.album-cover, h1, .artist, .message, .btn, footer');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2 + 0.2}s`;
+            });
+            
+            // Forzar scroll al inicio
+            window.scrollTo(0, 0);
         });
     </script>
 </body>
